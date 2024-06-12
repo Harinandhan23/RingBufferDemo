@@ -14,7 +14,7 @@ void InitialiseRingBuffer(ringbuffer *handle, uint32_t size)
 {
 	handle->head = 0;
 	handle->tail = 0;
-	handle->maxLength = size;
+	handle->maxLength = size + 1;
 
 	node *newList = (node *)malloc(sizeof(node));
 

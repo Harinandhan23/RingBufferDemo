@@ -23,7 +23,7 @@ void AddItemToNode(node **currentNode, int data)
 
     //re-assign head to this newNode
     *currentNode = newNode;
-    printf("Inserted %d\n",newNode->data);
+    printf("%d\n",newNode->data);
 }
 
 void traverselist(node **currentNode)

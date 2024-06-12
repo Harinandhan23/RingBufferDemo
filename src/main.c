@@ -14,30 +14,41 @@
 #include "SLL.h"
 #include "Ringbuffer.h"
 
+static uint32_t bufferLength = 0;
+
+static uint32_t *data = NULL;
+
+static ringbuffer inputData;
+
 int main(void)
 {
-//	node *n1 = NULL;
+	printf("Enter ringbuffer size.........\n");
+	scanf("%d", &bufferLength);
 
-//    AddItemToNode(&n1, 100);
-//    AddItemToNode(&n1, 20);
-//    AddItemToNode(&n1, 500);
+	data = (uint32_t *)malloc(bufferLength * sizeof(uint32_t));
 
-//    traverselist(&n1);
+	InitialiseRingBuffer(&inputData, bufferLength);
 
-//    printf("pop - %d\n", searchlist(&n1, 0));
-//    printf("pop - %d\n", searchlist(&n1, 1));
-//    printf("pop - %d\n", searchlist(&n1, 2));
+	printf("\nThe ringbuffer size - %d\n", bufferLength);
 
-	ringbuffer spiBuffer;
+	printf("Enter elements.....\n");
 
-	InitialiseRingBuffer(&spiBuffer, 4);
+	for(int inputCount = 0; inputCount < bufferLength; inputCount++)
+	{
+		scanf("%d", &data[inputCount]);
+	}
 
-	PushToBuffer(&spiBuffer, 180);
-	PushToBuffer(&spiBuffer, 200);
-	PushToBuffer(&spiBuffer, 250);
+	printf("\nPushing data into ringbuffer.......\n");
 
-	printf("popped data - %d\n",PopFromBuffer(&spiBuffer));
-	printf("popped data - %d\n",PopFromBuffer(&spiBuffer));
-	printf("popped data - %d\n",PopFromBuffer(&spiBuffer));
+	for(int inputCount = 0; inputCount < bufferLength; inputCount++)
+	{
+		PushToBuffer(&inputData, data[inputCount]);
+	}
 
+	printf("\nRetrieving data from ringbuffer.......\n");
+
+	for(int inputCount = 0; inputCount < bufferLength; inputCount++)
+	{
+		printf("%d\n",PopFromBuffer(&inputData));
+	}
 }
