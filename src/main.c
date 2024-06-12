@@ -51,4 +51,7 @@ int main(void)
 	{
 		printf("%d\n",PopFromBuffer(&inputData));
 	}
+
+	free(data);
+	data = NULL;
 }
