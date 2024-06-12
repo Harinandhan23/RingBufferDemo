@@ -11,7 +11,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void) {
-	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
-	return EXIT_SUCCESS;
+#include "SLL.h"
+
+int main(void)
+{
+	node *n1 = NULL;
+
+    AddItemToNode(&n1, 100);
+    AddItemToNode(&n1, 20);
+    AddItemToNode(&n1, 500);
+
+//    traverselist(&n1);
+
+    printf("pop - %d\n", searchlist(&n1, 0));
+    printf("pop - %d\n", searchlist(&n1, 1));
+    printf("pop - %d\n", searchlist(&n1, 2));
 }
